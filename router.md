@@ -9,11 +9,17 @@ Notre version de `Link`, appelée `CustomLink` accepte un props `to` sous la for
 
 **1. Comment fait-on une redirection avec `react-router` ?**
 
+Pour faire une redirection avec `react-router` il faut aller dans l'historique, présent dans les props, puis utiliser la méthode `push()`. Passer en paramètre la page dans laquelle vous voulez rediriger l'utilisateur.
+
 Mais comment avoir accès à cet objet que vous venez d'évoquer ? Dans le cours, il était injecté par `Route`. Cette fois-ci, nous allons utiliser la fonction [`useHistory`](https://reactrouter.com/web/api/Hooks/usehistory). 
 
 **2. Après avoir lu la documentation correspondante, décrivez le fonctionnement de cette fonction.**
 
+Pour avoir accès à l'historique nous pouvons utiliser un "hook", ce qui rend plus facile l'accéssibilité de cette fonction. Cette fonction permet d'aller chercher l'historique des pages visitées par l'utilisateur. Il faut ensuite utilisé la méthode `push("/NomDeLaPage")` et renseigner le chemin de la page pour faire la redirection.
+
 **3. En utilisant cette fonction, devez-vous implémenter le `CustomLink` composant sous la forme d'une fonction ou d'une classe ?**
+
+Il faut implémenter le `CustomLink` sous la forme d'une fonction.
 
 **4. Faites l'implémentation de `CustomLink`, ajoutez les `propTypes`, testez la dans une codesandbox et copiez votre implémentation de `CustomLink` dans ce document.**
 
