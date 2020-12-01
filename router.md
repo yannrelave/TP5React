@@ -182,6 +182,8 @@ ReactDOM.render(
 
 **8. Ce code utilise `useParams`, que nous n'avons encore jamais utilisé. A quoi sert-il ?**
 
+`useParams` permet de récupérer les valeur passer en paramètres de l'URL de la route "name" sous la forme clé/valeur.
+
 **9. Créez un nouveau projet à partir de code.  Créez un test qui injecte `MemoryRouter` autour de `App`. Indiquez des URL à `MemoryRouter` et vérifiez que les posts affichent bien le contenu de l'URL.**
 
 Aide : la [documentation](https://reactrouter.com/web/guides/testing) fournit quelques renseignements sur le testing d'une application avec un routeur. Vous pouvez reprendre également la [documentation de React conernant les tests](https://reactjs.org/docs/testing.html).
