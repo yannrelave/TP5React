@@ -128,6 +128,8 @@ Notre composant `CustomRoute` accepte deux props:
 
 **6. Dans la documentation de la `react-router`, trouvez trois hooks permettant d'obtenir les variables `history`, `location` et `match`.**
 
+Pour obtenir la variable `history` il faut utiliser le "hooks" `useHistory`. `useLocation` est le "hooks pour obtenir la variable `location`. Pour récupérer la variable `match` il faut utiliser le "hooks" `useRouteMatch`.
+
 **7. Faites l'implémentation de `CustomRoute`, ajoutez les `propTypes`, testez la dans une codesandbox et copiez votre implémentation de `CustomRoute` dans ce document.**
 
 
