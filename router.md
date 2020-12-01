@@ -19,6 +19,10 @@ Pour avoir accès à l'historique nous pouvons utiliser un "hook", ce qui rend p
 
 **3. En utilisant cette fonction, devez-vous implémenter le `CustomLink` composant sous la forme d'une fonction ou d'une classe ?**
 
+Il faut implémenter le `CustomLink` sous la forme d'une fonction.
+
+**4. Faites l'implémentation de `CustomLink`, ajoutez les `propTypes`, testez la dans une codesandbox et copiez votre implémentation de `CustomLink` dans ce document.**
+
 ```javascript
 import React, { Fragment } from "react";
 import {
@@ -106,10 +110,6 @@ const FakeText = () => (
 );
 
 ```
-
-Il faut implémenter le `CustomLink` sous la forme d'une fonction.
-
-**4. Faites l'implémentation de `CustomLink`, ajoutez les `propTypes`, testez la dans une codesandbox et copiez votre implémentation de `CustomLink` dans ce document.**
 
 Pour procéder à l'implémentation de `CustomLink` sous l'autre forme (classe ou fonction, selon votre réponse à la question 3.), nous utiliserons la fonction [`withRouter`](https://reactrouter.com/web/api/withRouter). Il s'agit d'un HOC ; nous les verrons en détail dans un prochain cours.
 
