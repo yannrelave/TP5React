@@ -19,6 +19,94 @@ Pour avoir accès à l'historique nous pouvons utiliser un "hook", ce qui rend p
 
 **3. En utilisant cette fonction, devez-vous implémenter le `CustomLink` composant sous la forme d'une fonction ou d'une classe ?**
 
+```javascript
+import React, { Fragment } from "react";
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Switch,
+  useRouteMatch
+} from "react-router-dom";
+import "./styles.css";
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <main>
+        <nav>
+          <ul>
+            <li>
+              <FormeMenuLink to="/" label="Home">
+                Home
+              </FormeMenuLink>
+            </li>
+            <li>
+              <FormeMenuLink to="/about" label="About">
+                About
+              </FormeMenuLink>
+            </li>
+            <li>
+              <FormeMenuLink to="/contact/" label="Contact">
+                Contact
+              </FormeMenuLink>
+            </li>
+          </ul>
+        </nav>
+      </main>
+      <Switch>
+        <Route exact={true} path="/">
+          <Home />
+        </Route>
+        <Route path="/contact/">
+          <Contact />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
+}
+
+function FormeMenuLink({ label, to }) {
+  return <Link to={to}>{label}</Link>;
+}
+
+// Home Page
+const Home = () => (
+  <>
+    <h1>Home</h1>
+    <FakeText />
+  </>
+);
+// About Page
+const About = () => (
+  <>
+    <h1>About</h1>
+    <FakeText />
+  </>
+);
+// Contact Page
+const Contact = () => (
+  <>
+    <h1>Contact</h1>
+    <FakeText />
+  </>
+);
+const FakeText = () => (
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+);
+
+```
+
 Il faut implémenter le `CustomLink` sous la forme d'une fonction.
 
 **4. Faites l'implémentation de `CustomLink`, ajoutez les `propTypes`, testez la dans une codesandbox et copiez votre implémentation de `CustomLink` dans ce document.**
