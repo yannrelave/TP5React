@@ -132,6 +132,81 @@ Pour obtenir la variable `history` il faut utiliser le "hooks" `useHistory`. `us
 
 **7. Faites l'implémentation de `CustomRoute`, ajoutez les `propTypes`, testez la dans une codesandbox et copiez votre implémentation de `CustomRoute` dans ce document.**
 
+```javascript
+import React from "react";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+
+const routes = [
+  {
+    path: "/",
+    component: Home
+  },
+  {
+    path: "/about",
+    component: About
+  },
+  {
+    path: "/blog",
+    component: Blog
+  }
+];
+
+export default function RouteConfigExample() {
+  return (
+    <BrowserRouter>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/blog">Blog</Link>
+          </li>
+        </ul>
+
+        <Switch>
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes exact={true} key={i} {...route} />
+          ))}
+        </Switch>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+function RouteWithSubRoutes(route) {
+  return (
+    <Route
+      path={route.path}
+      render={(props) => (
+        // pass the sub-routes down to keep nesting
+        <route.component {...props} routes={route.routes} />
+      )}
+    />
+  );
+}
+
+function Home() {
+  return <h2>Home</h2>;
+}
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Blog({ routes }) {
+  return (
+    <div>
+      <h2>Blog</h2>
+    </div>
+  );
+}
+
+```
+
 
 ## Tester le routage avec React
 
