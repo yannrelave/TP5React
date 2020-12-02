@@ -126,7 +126,9 @@ Pour procéder à l'implémentation de `CustomLink` sous l'autre forme (classe o
 **5. Reprenez les questions 2 à 4 avec `withRouter`**
 
 5.2 : `withRouter` permet de stocker dans un component les "props" : les "match", la location, ainsi que l'historique des pages visité par l'utilisateurs.
+
 5.3 : `withRouter` doit être implémenté sous la forme d'une classe.
+
 5.4 : 
 
 ## Ré-implémenter le composant Route
