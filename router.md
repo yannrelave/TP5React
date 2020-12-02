@@ -35,20 +35,22 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <FormeHomeLink to="/">Home</FormeHomeLink>
+              <FormeHomeLink>Home</FormeHomeLink>
             </li>
             <li>
-              <FormeAboutLink to="/about">About</FormeAboutLink>
+              <FormeAboutLink>About</FormeAboutLink>
             </li>
             <li>
-              <FormeBlogLink to="/blog/">Blog</FormeBlogLink>
+              <FormeBlogLink>Blog</FormeBlogLink>
             </li>
           </ul>
         </nav>
       </main>
       <Switch>
         <Route exact={true} path="/">
-          <Home />
+          <Home>
+            <FakeText />
+          </Home>
         </Route>
         <Route path="/about/">
           <About />
@@ -63,20 +65,23 @@ export default function App() {
 
 function FormeHomeLink() {
   let history = useHistory();
-
   history.push(Home);
+
+  return <a href="/">Home</a>;
 }
 
 function FormeAboutLink() {
   let history = useHistory();
-
   history.push(About);
+
+  return <a href="/about">About</a>;
 }
 
 function FormeBlogLink() {
   let history = useHistory();
-
   history.push(Blog);
+
+  return <a href="/blog">Blog</a>;
 }
 
 // Home Page
@@ -120,9 +125,9 @@ Pour procéder à l'implémentation de `CustomLink` sous l'autre forme (classe o
 
 **5. Reprenez les questions 2 à 4 avec `withRouter`**
 
-`withRouter` permet de stocker dans un component les "props" : les "match", la location, ainsi que l'historique des pages visité par l'utilisateurs.
-`withRouter` doit être implémenté sous la forme d'une classe.
-
+5.2 : `withRouter` permet de stocker dans un component les "props" : les "match", la location, ainsi que l'historique des pages visité par l'utilisateurs.
+5.3 : `withRouter` doit être implémenté sous la forme d'une classe.
+5.4 : 
 
 ## Ré-implémenter le composant Route
 
