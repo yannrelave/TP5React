@@ -24,14 +24,8 @@ Il faut implémenter le `CustomLink` sous la forme d'une fonction.
 **4. Faites l'implémentation de `CustomLink`, ajoutez les `propTypes`, testez la dans une codesandbox et copiez votre implémentation de `CustomLink` dans ce document.**
 
 ```javascript
-import React, { Fragment } from "react";
-import {
-  BrowserRouter,
-  Link,
-  Route,
-  Switch,
-  useRouteMatch
-} from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import "./styles.css";
 
 export default function App() {
@@ -41,19 +35,13 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <FormeMenuLink to="/" label="Home">
-                Home
-              </FormeMenuLink>
+              <FormeHomeLink to="/">Home</FormeHomeLink>
             </li>
             <li>
-              <FormeMenuLink to="/about" label="About">
-                About
-              </FormeMenuLink>
+              <FormeAboutLink to="/about">About</FormeAboutLink>
             </li>
             <li>
-              <FormeMenuLink to="/contact/" label="Contact">
-                Contact
-              </FormeMenuLink>
+              <FormeBlogLink to="/blog/">Blog</FormeBlogLink>
             </li>
           </ul>
         </nav>
@@ -62,25 +50,40 @@ export default function App() {
         <Route exact={true} path="/">
           <Home />
         </Route>
-        <Route path="/contact/">
-          <Contact />
-        </Route>
-        <Route path="/about">
+        <Route path="/about/">
           <About />
+        </Route>
+        <Route path="/blog">
+          <Blog />
         </Route>
       </Switch>
     </BrowserRouter>
   );
 }
 
-function FormeMenuLink({ label, to }) {
-  return <Link to={to}>{label}</Link>;
+function FormeHomeLink() {
+  let history = useHistory();
+
+  history.push(Home);
+}
+
+function FormeAboutLink() {
+  let history = useHistory();
+
+  history.push(About);
+}
+
+function FormeBlogLink() {
+  let history = useHistory();
+
+  history.push(Blog);
 }
 
 // Home Page
 const Home = () => (
   <>
     <h1>Home</h1>
+    <h2>Voici notre page d'accueil</h2>
     <FakeText />
   </>
 );
@@ -88,13 +91,15 @@ const Home = () => (
 const About = () => (
   <>
     <h1>About</h1>
+    <h2>Tout à propos de nous</h2>
     <FakeText />
   </>
 );
-// Contact Page
-const Contact = () => (
+// Blog Page
+const Blog = () => (
   <>
-    <h1>Contact</h1>
+    <h1>Blog</h1>
+    <h2>Voici notre blog</h2>
     <FakeText />
   </>
 );
