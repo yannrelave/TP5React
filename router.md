@@ -27,6 +27,16 @@ Il faut implémenter le `CustomLink` sous la forme d'une fonction.
 import React from "react";
 import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import "./styles.css";
+import styled from "styled-components";
+
+const FormeLI = styled.div`
+  color: blue;
+  list-style: none;
+  text-decoration: underline;
+  cursor: pointer;
+  display: inline;
+  margin-left: 20px;
+`;
 
 export default function App() {
   return (
@@ -34,15 +44,21 @@ export default function App() {
       <main>
         <nav>
           <ul>
-            <li>
-              <FormeHomeLink>Home</FormeHomeLink>
-            </li>
-            <li>
-              <FormeAboutLink>About</FormeAboutLink>
-            </li>
-            <li>
-              <FormeBlogLink>Blog</FormeBlogLink>
-            </li>
+            <FormeLI>
+              <li>
+                <FormeLink to="/">Home</FormeLink>
+              </li>
+            </FormeLI>
+            <FormeLI>
+              <li>
+                <FormeLink to="/about">About</FormeLink>
+              </li>
+            </FormeLI>
+            <FormeLI>
+              <li>
+                <FormeLink to="/blog">Blog</FormeLink>
+              </li>
+            </FormeLI>
           </ul>
         </nav>
       </main>
@@ -63,25 +79,10 @@ export default function App() {
   );
 }
 
-function FormeHomeLink() {
+function FormeLink(props) {
   let history = useHistory();
-  history.push(Home);
 
-  return <a href="/">Home</a>;
-}
-
-function FormeAboutLink() {
-  let history = useHistory();
-  history.push(About);
-
-  return <a href="/about">About</a>;
-}
-
-function FormeBlogLink() {
-  let history = useHistory();
-  history.push(Blog);
-
-  return <a href="/blog">Blog</a>;
+  return <p onClick={() => history.push(props.to)}>{props.children}</p>;
 }
 
 // Home Page
