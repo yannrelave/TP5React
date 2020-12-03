@@ -146,77 +146,105 @@ Pour obtenir la variable `history` il faut utiliser le "hooks" `useHistory`. `us
 **7. Faites l'implémentation de `CustomRoute`, ajoutez les `propTypes`, testez la dans une codesandbox et copiez votre implémentation de `CustomRoute` dans ce document.**
 
 ```javascript
-import React from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import React, { Component } from "react";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
+import "./styles.css";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { withRouter } from "react-router";
 
-const routes = [
-  {
-    path: "/",
-    component: Home
-  },
-  {
-    path: "/about",
-    component: About
-  },
-  {
-    path: "/blog",
-    component: Blog
+const FormeLI = styled.div`
+  color: blue;
+  list-style: none;
+  text-decoration: underline;
+  cursor: pointer;
+  display: inline;
+  margin-left: 20px;
+`;
+
+const Titre = styled.h1`
+  text-transform: capitalize;
+  font-size: 20px;
+`;
+
+export default class App extends Component {
+  render() {
+    return (
+      <>
+        <BrowserRouter>
+          <main>
+            <nav>
+              <ul>
+                <FormeLI>
+                  <li>
+                    <FormeLink to="/home">Home</FormeLink>
+                  </li>
+                </FormeLI>
+                <FormeLI>
+                  <li>
+                    <FormeLink to="/about">About</FormeLink>
+                  </li>
+                </FormeLI>
+                <FormeLI>
+                  <li>
+                    <FormeLink to="/blog">Blog</FormeLink>
+                  </li>
+                </FormeLI>
+              </ul>
+            </nav>
+          </main>
+          <Switch>
+            <CustomRoute />
+          </Switch>
+        </BrowserRouter>
+      </>
+    );
   }
-];
 
-export default function RouteConfigExample() {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  };
+}
+
+function CustomRoute() {
+  let location = useLocation();
+  let match = useRouteMatch(location);
+
   return (
-    <BrowserRouter>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/blog">Blog</Link>
-          </li>
-        </ul>
-
-        <Switch>
-          {routes.map((route, i) => (
-            <RouteWithSubRoutes exact={true} key={i} {...route} />
-          ))}
-        </Switch>
-      </div>
-    </BrowserRouter>
+    <>
+      <Titre>
+        <h1>{location.pathname.replaceAll("/", " ")}</h1>
+      </Titre>
+      <FakeText />
+    </>
   );
 }
 
-function RouteWithSubRoutes(route) {
-  return (
-    <Route
-      path={route.path}
-      render={(props) => (
-        // pass the sub-routes down to keep nesting
-        <route.component {...props} routes={route.routes} />
-      )}
-    />
-  );
-}
+function FormeLink(props) {
+  let history = useHistory();
 
-function Home() {
-  return <h2>Home</h2>;
+  return <p onClick={() => history.push(props.to)}>{props.children}</p>;
 }
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Blog({ routes }) {
-  return (
-    <div>
-      <h2>Blog</h2>
-    </div>
-  );
-}
+const FakeText = () => (
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+);
 
 ```
 
