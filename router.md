@@ -147,15 +147,7 @@ Pour obtenir la variable `history` il faut utiliser le "hooks" `useHistory`. `us
 
 ```javascript
 import React, { Component } from "react";
-import {
-  BrowserRouter,
-  Route,
-  Switch,
-  useHistory,
-  useLocation,
-  useRouteMatch,
-  useParams
-} from "react-router-dom";
+import {BrowserRouter, Route, Switch, useHistory, useLocation, useRouteMatch, useParams } from "react-router-dom";
 import "./styles.css";
 import PropTypes from "prop-types";
 import styled from "styled-components";
